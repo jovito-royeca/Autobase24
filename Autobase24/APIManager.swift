@@ -33,7 +33,7 @@ class APIManager: NSObject {
                 
             } else {
                 let notifName = NSNotification.Name.NSManagedObjectContextObjectsDidChange
-                let operations:Sync.OperationOptions = .all//[.insert, .update] //.all
+                let operations:Sync.OperationOptions = [.insert, .update] //.all
                 var data = [[String : Any]]()
                 
                 if let first = result.first {
