@@ -31,6 +31,9 @@
                     </imageView>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="star" offImage="star" translatesAutoresizingMaskIntoConstraints="NO" id="c2H-Cd-6UB">
                         <rect key="frame" x="263" y="86" width="51" height="31"/>
+                        <connections>
+                            <action selector="favoriteAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="HzC-yR-bho"/>
+                        </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UX-Jx-xQq">
                         <rect key="frame" x="112" y="30" width="100" height="18"/>

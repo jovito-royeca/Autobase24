@@ -49,37 +49,12 @@ class CarsViewController: UIViewController {
         let dataSource = DATASource(tableView: tableView, cellIdentifier: "CarSummaryCell", fetchRequest: request!, mainContext: APIManager.sharedInstance.dataStack.mainContext, sectionName: nil, configuration: { cell, item, indexPath in
             if let vehicle = item as? Vehicle,
                 let cell = cell as? CarSummaryTableViewCell{
-                self.configureCell(cell, withVehicle: vehicle)
+                cell.delegate = self
+                cell.updateDisplay(vehicle: vehicle)
             }
         })
         
         return dataSource
-    }
-    
-    func configureCell(_ cell: CarSummaryTableViewCell, withVehicle vehicle: Vehicle) {
-        if let images = vehicle.images {
-            if let imagesArray = NSKeyedUnarchiver.unarchiveObject(with: images as Data) as? [String] {
-                cell.downloadImages(imageURLs: imagesArray)
-            } else {
-                cell.vehicleImage.image = nil
-            }
-            
-        } else {
-            cell.vehicleImage.image = nil
-        }
-        
-        cell.makeLabel?.text = vehicle.make
-        cell.priceLabel?.text = "\u{20AC} \(vehicle.price)"
-        if let firstRegistration = vehicle.firstRegistration {
-            cell.yearLabel.text = "year \(firstRegistration)"
-        } else {
-            cell.yearLabel.text = "year -"
-        }
-        cell.addressLabel.text = vehicle.address
-        cell.mileageLabel.text = "\(vehicle.mileage) km"
-        cell.powerKWLabel.text = "\(vehicle.powerKW) kW"
-        cell.accidentLabel.text = "\(vehicle.accidentFree ? "w/o accident" : "w/ accident")"
-        cell.detailTextLabel?.text = vehicle.make
     }
 }
 
@@ -87,5 +62,13 @@ class CarsViewController: UIViewController {
 extension CarsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 118
+    }
+}
+
+// MARK: CarSummaryTableViewCellDelegate
+extension CarsViewController : CarSummaryTableViewCellDelegate {
+    func toggle(vehicle: Vehicle, favorite: Bool) {
+        vehicle.favorite = favorite
+        try! APIManager.sharedInstance.dataStack.mainContext.save()
     }
 }

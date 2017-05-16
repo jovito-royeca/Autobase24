@@ -80,6 +80,7 @@
 		1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vehicle+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		113739351ECB58E800D18981 /* CarSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		113739361ECB58E800D18981 /* CarSummaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarSummaryTableViewCell.xib; sourceTree = "<group>"; };
+		1137393B1ECB6EC900D18981 /* Autobase24Model 17-05-2017.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Autobase24Model 17-05-2017.xcdatamodel"; sourceTree = "<group>"; };
 		682DFE685735554706EB166B /* Pods_Autobase24UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobase24UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A2E96735A604BBEB680C02 /* Pods_Autobase24Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobase24Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94391D29487340560052DCB3 /* Pods-Autobase24UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autobase24UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Autobase24UITests/Pods-Autobase24UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -818,9 +819,10 @@
 		113739231ECB3F6000D18981 /* Autobase24Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1137393B1ECB6EC900D18981 /* Autobase24Model 17-05-2017.xcdatamodel */,
 				113739241ECB3F6000D18981 /* Autobase24Model.xcdatamodel */,
 			);
-			currentVersion = 113739241ECB3F6000D18981 /* Autobase24Model.xcdatamodel */;
+			currentVersion = 1137393B1ECB6EC900D18981 /* Autobase24Model 17-05-2017.xcdatamodel */;
 			path = Autobase24Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

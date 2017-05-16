@@ -26,5 +26,5 @@ extension Vehicle {
     @NSManaged public var fuelType: String?
     @NSManaged public var address: String?
     @NSManaged public var price: Double
-
+    @NSManaged public var favorite: Bool
 }
