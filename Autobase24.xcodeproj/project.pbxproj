@@ -17,6 +17,21 @@
 		1137391C1ECB385C00D18981 /* CarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137391A1ECB385C00D18981 /* CarsViewController.swift */; };
 		1137391E1ECB387000D18981 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137391D1ECB387000D18981 /* FavoritesViewController.swift */; };
 		1137391F1ECB387000D18981 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137391D1ECB387000D18981 /* FavoritesViewController.swift */; };
+		113739211ECB3A5A00D18981 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739201ECB3A5A00D18981 /* APIManager.swift */; };
+		113739221ECB3A5A00D18981 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739201ECB3A5A00D18981 /* APIManager.swift */; };
+		113739251ECB3F6000D18981 /* Autobase24Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 113739231ECB3F6000D18981 /* Autobase24Model.xcdatamodeld */; };
+		113739261ECB3F6000D18981 /* Autobase24Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 113739231ECB3F6000D18981 /* Autobase24Model.xcdatamodeld */; };
+		113739271ECB3F6000D18981 /* Autobase24Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 113739231ECB3F6000D18981 /* Autobase24Model.xcdatamodeld */; };
+		113739291ECB40DC00D18981 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739281ECB40DC00D18981 /* NetworkingManager.swift */; };
+		1137392A1ECB40DC00D18981 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739281ECB40DC00D18981 /* NetworkingManager.swift */; };
+		1137392B1ECB40DC00D18981 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739281ECB40DC00D18981 /* NetworkingManager.swift */; };
+		1137392C1ECB40EB00D18981 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739201ECB3A5A00D18981 /* APIManager.swift */; };
+		1137392F1ECB4D8100D18981 /* Vehicle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392D1ECB4D8100D18981 /* Vehicle+CoreDataClass.swift */; };
+		113739301ECB4D8100D18981 /* Vehicle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392D1ECB4D8100D18981 /* Vehicle+CoreDataClass.swift */; };
+		113739311ECB4D8100D18981 /* Vehicle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392D1ECB4D8100D18981 /* Vehicle+CoreDataClass.swift */; };
+		113739321ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */; };
+		113739331ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */; };
+		113739341ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */; };
 		16477BB8214A8B11B2F1972A /* Pods_Autobase24.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25FAD77715F0B63263F52D7 /* Pods_Autobase24.framework */; };
 		C39D90F49973C4F5E784DC20 /* Pods_Autobase24Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A2E96735A604BBEB680C02 /* Pods_Autobase24Tests.framework */; };
 		EC1E7F0462461DDB54A6BB1D /* Pods_Autobase24UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682DFE685735554706EB166B /* Pods_Autobase24UITests.framework */; };
@@ -54,6 +69,11 @@
 		1137390A1ECB338900D18981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1137391A1ECB385C00D18981 /* CarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsViewController.swift; sourceTree = "<group>"; };
 		1137391D1ECB387000D18981 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		113739201ECB3A5A00D18981 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		113739241ECB3F6000D18981 /* Autobase24Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Autobase24Model.xcdatamodel; sourceTree = "<group>"; };
+		113739281ECB40DC00D18981 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		1137392D1ECB4D8100D18981 /* Vehicle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vehicle+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vehicle+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		682DFE685735554706EB166B /* Pods_Autobase24UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobase24UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A2E96735A604BBEB680C02 /* Pods_Autobase24Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobase24Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94391D29487340560052DCB3 /* Pods-Autobase24UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autobase24UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Autobase24UITests/Pods-Autobase24UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +170,9 @@
 		113739161ECB35EC00D18981 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1137392D1ECB4D8100D18981 /* Vehicle+CoreDataClass.swift */,
+				1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */,
+				113739231ECB3F6000D18981 /* Autobase24Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -175,6 +198,8 @@
 		113739191ECB366500D18981 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				113739201ECB3A5A00D18981 /* APIManager.swift */,
+				113739281ECB40DC00D18981 /* NetworkingManager.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -483,7 +508,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				113739211ECB3A5A00D18981 /* APIManager.swift in Sources */,
+				1137392F1ECB4D8100D18981 /* Vehicle+CoreDataClass.swift in Sources */,
 				113738E91ECB338900D18981 /* AppDelegate.swift in Sources */,
+				113739251ECB3F6000D18981 /* Autobase24Model.xcdatamodeld in Sources */,
+				113739321ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */,
+				113739291ECB40DC00D18981 /* NetworkingManager.swift in Sources */,
 				1137391E1ECB387000D18981 /* FavoritesViewController.swift in Sources */,
 				1137391B1ECB385C00D18981 /* CarsViewController.swift in Sources */,
 			);
@@ -493,6 +523,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				113739261ECB3F6000D18981 /* Autobase24Model.xcdatamodeld in Sources */,
+				113739301ECB4D8100D18981 /* Vehicle+CoreDataClass.swift in Sources */,
+				113739331ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */,
+				1137392A1ECB40DC00D18981 /* NetworkingManager.swift in Sources */,
+				113739221ECB3A5A00D18981 /* APIManager.swift in Sources */,
 				113738FE1ECB338900D18981 /* Autobase24Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,9 +536,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1137392C1ECB40EB00D18981 /* APIManager.swift in Sources */,
+				113739311ECB4D8100D18981 /* Vehicle+CoreDataClass.swift in Sources */,
 				113739091ECB338900D18981 /* Autobase24UITests.swift in Sources */,
 				1137391F1ECB387000D18981 /* FavoritesViewController.swift in Sources */,
+				113739341ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */,
 				1137391C1ECB385C00D18981 /* CarsViewController.swift in Sources */,
+				1137392B1ECB40DC00D18981 /* NetworkingManager.swift in Sources */,
+				113739271ECB3F6000D18981 /* Autobase24Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +801,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		113739231ECB3F6000D18981 /* Autobase24Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				113739241ECB3F6000D18981 /* Autobase24Model.xcdatamodel */,
+			);
+			currentVersion = 113739241ECB3F6000D18981 /* Autobase24Model.xcdatamodel */;
+			path = Autobase24Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 113738DD1ECB338900D18981 /* Project object */;
 }

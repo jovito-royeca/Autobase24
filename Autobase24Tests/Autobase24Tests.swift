@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreData
 @testable import Autobase24
 
 class Autobase24Tests: XCTestCase {
@@ -33,4 +34,27 @@ class Autobase24Tests: XCTestCase {
         }
     }
     
+    func testFetchCars() {
+        print("docsPath = \(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])")
+        
+        let expectation = self.expectation(description: "fetch cars")
+        
+        APIManager.sharedInstance.fetchCars(completion: { error in
+            XCTAssert(error == nil)
+            
+            // check if we saved the vehicles in Core Data
+            let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Vehicle")
+            request.sortDescriptors = [NSSortDescriptor(key: "firstRegistration", ascending: true)]
+            
+            if let vehicles = try! APIManager.sharedInstance.dataStack.mainContext.fetch(request) as? [Vehicle] {
+                print("vehicles = \(vehicles.count)")
+            } else {
+                print("no vehicles found")
+            }
+            
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10.0, handler: nil)
+    }
 }
