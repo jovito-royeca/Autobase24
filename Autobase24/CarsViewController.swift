@@ -9,6 +9,7 @@
 import UIKit
 import DATAStack
 import DATASource
+import MBProgressHUD
 
 class CarsViewController: UIViewController {
 
@@ -24,10 +25,12 @@ class CarsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "CarSummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "CarSummaryCell")
-        
+
+        MBProgressHUD.showAdded(to: tableView, animated: true)
         APIManager.sharedInstance.fetchCars(completion: { error in
             self.dataSource = self.getDataSource(nil)
             self.tableView.reloadData()
+            MBProgressHUD.hide(for: self.tableView, animated: true)
         })
     }
 

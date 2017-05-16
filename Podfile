@@ -7,6 +7,7 @@ use_frameworks!
 target "Autobase24" do
     pod 'DATASource'#, '~> 5.8'
     pod 'DATAStack', '~> 6'
+    pod 'MBProgressHUD'
     pod 'Networking'
     pod 'ReachabilitySwift'
     pod 'SimulatorStatusMagic', :configurations => ['Debug']
@@ -16,6 +17,7 @@ end
 target "Autobase24Tests" do
     pod 'DATASource'#, '~> 5.8'
     pod 'DATAStack', '~> 6'
+    pod 'MBProgressHUD'
     pod 'Networking'
     pod 'ReachabilitySwift'
     pod 'SimulatorStatusMagic', :configurations => ['Debug']
@@ -25,6 +27,7 @@ end
 target "Autobase24UITests" do
     pod 'DATASource'#, '~> 5.8'
     pod 'DATAStack', '~> 6'
+    pod 'MBProgressHUD'
     pod 'Networking'
     pod 'ReachabilitySwift'
     pod 'SimulatorStatusMagic', :configurations => ['Debug']

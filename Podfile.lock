@@ -1,6 +1,7 @@
 PODS:
   - DATASource (6.1.5)
   - DATAStack (6.2.0)
+  - MBProgressHUD (1.0.0)
   - Networking (3.0.3)
   - ReachabilitySwift (3)
   - SimulatorStatusMagic (1.9.5)
@@ -9,6 +10,7 @@ PODS:
 DEPENDENCIES:
   - DATASource
   - DATAStack (~> 6)
+  - MBProgressHUD
   - Networking
   - ReachabilitySwift
   - SimulatorStatusMagic
@@ -17,11 +19,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   DATASource: 52b86cfff6c7ac3db45192c01f7839c7473576c3
   DATAStack: 06d6a00f4fe84f11afdae2a6f47558f1087000e5
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Networking: e2c42013296d093e4249f8247acb08e36958a11a
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SimulatorStatusMagic: b3b4c5c49a07e8b1c452cc0327275e267a865fea
   Sync: a06a34b46cb2d0e763576278487667f357e8c249
 
-PODFILE CHECKSUM: 72b8b3204dcc8875ef4e73810f43b6df6e35cd17
+PODFILE CHECKSUM: 1f0bc8dba14b022b440721330f485bea2df44296
 
 COCOAPODS: 1.2.1
