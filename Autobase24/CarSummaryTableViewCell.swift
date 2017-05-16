@@ -27,7 +27,7 @@ class CarSummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var powerKWLabel: UILabel!
-    @IBOutlet weak var accidentLabel: UILabel!
+    @IBOutlet weak var fuelTypeLabel: UILabel!
     
     // MARK: Actions
     @IBAction func favoriteAction(_ sender: UISwitch) {
@@ -50,7 +50,7 @@ class CarSummaryTableViewCell: UITableViewCell {
         addressLabel.adjustsFontSizeToFitWidth = true
         mileageLabel.adjustsFontSizeToFitWidth = true
         powerKWLabel.adjustsFontSizeToFitWidth = true
-        accidentLabel.adjustsFontSizeToFitWidth = true
+        fuelTypeLabel.adjustsFontSizeToFitWidth = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -95,8 +95,7 @@ class CarSummaryTableViewCell: UITableViewCell {
         addressLabel.text = vehicle.address
         mileageLabel.text = "\(vehicle.mileage) km"
         powerKWLabel.text = "\(vehicle.powerKW) kW"
-        accidentLabel.text = "\(vehicle.accidentFree ? "w/o accident" : "w/ accident")"
-        detailTextLabel?.text = vehicle.make
+        fuelTypeLabel.text = vehicle.fuelType
         
         favoriteSwitch.isOn = vehicle.favorite
         starIcon.image = vehicle.favorite ? UIImage(named: "star-filled") : UIImage(named: "star")
