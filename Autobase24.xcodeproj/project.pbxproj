@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		113738E91ECB338900D18981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113738E81ECB338900D18981 /* AppDelegate.swift */; };
-		113738EB1ECB338900D18981 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113738EA1ECB338900D18981 /* ViewController.swift */; };
 		113738EE1ECB338900D18981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113738EC1ECB338900D18981 /* Main.storyboard */; };
 		113738F01ECB338900D18981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113738EF1ECB338900D18981 /* Assets.xcassets */; };
 		113738F31ECB338900D18981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113738F11ECB338900D18981 /* LaunchScreen.storyboard */; };
 		113738FE1ECB338900D18981 /* Autobase24Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113738FD1ECB338900D18981 /* Autobase24Tests.swift */; };
 		113739091ECB338900D18981 /* Autobase24UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739081ECB338900D18981 /* Autobase24UITests.swift */; };
+		1137391B1ECB385C00D18981 /* CarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137391A1ECB385C00D18981 /* CarsViewController.swift */; };
+		1137391C1ECB385C00D18981 /* CarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137391A1ECB385C00D18981 /* CarsViewController.swift */; };
+		1137391E1ECB387000D18981 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137391D1ECB387000D18981 /* FavoritesViewController.swift */; };
+		1137391F1ECB387000D18981 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137391D1ECB387000D18981 /* FavoritesViewController.swift */; };
 		16477BB8214A8B11B2F1972A /* Pods_Autobase24.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25FAD77715F0B63263F52D7 /* Pods_Autobase24.framework */; };
 		C39D90F49973C4F5E784DC20 /* Pods_Autobase24Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A2E96735A604BBEB680C02 /* Pods_Autobase24Tests.framework */; };
 		EC1E7F0462461DDB54A6BB1D /* Pods_Autobase24UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682DFE685735554706EB166B /* Pods_Autobase24UITests.framework */; };
@@ -39,7 +42,6 @@
 /* Begin PBXFileReference section */
 		113738E51ECB338900D18981 /* Autobase24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autobase24.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		113738E81ECB338900D18981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		113738EA1ECB338900D18981 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		113738ED1ECB338900D18981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		113738EF1ECB338900D18981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		113738F21ECB338900D18981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +52,8 @@
 		113739041ECB338900D18981 /* Autobase24UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autobase24UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		113739081ECB338900D18981 /* Autobase24UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autobase24UITests.swift; sourceTree = "<group>"; };
 		1137390A1ECB338900D18981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1137391A1ECB385C00D18981 /* CarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsViewController.swift; sourceTree = "<group>"; };
+		1137391D1ECB387000D18981 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		682DFE685735554706EB166B /* Pods_Autobase24UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobase24UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A2E96735A604BBEB680C02 /* Pods_Autobase24Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobase24Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94391D29487340560052DCB3 /* Pods-Autobase24UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autobase24UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Autobase24UITests/Pods-Autobase24UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,11 +118,12 @@
 		113738E71ECB338900D18981 /* Autobase24 */ = {
 			isa = PBXGroup;
 			children = (
+				113739161ECB35EC00D18981 /* Model */,
+				113739171ECB35F500D18981 /* Controller */,
+				113739181ECB360400D18981 /* View */,
+				113739191ECB366500D18981 /* Utilities */,
 				113738E81ECB338900D18981 /* AppDelegate.swift */,
-				113738EA1ECB338900D18981 /* ViewController.swift */,
-				113738EC1ECB338900D18981 /* Main.storyboard */,
 				113738EF1ECB338900D18981 /* Assets.xcassets */,
-				113738F11ECB338900D18981 /* LaunchScreen.storyboard */,
 				113738F41ECB338900D18981 /* Info.plist */,
 			);
 			path = Autobase24;
@@ -140,6 +145,38 @@
 				1137390A1ECB338900D18981 /* Info.plist */,
 			);
 			path = Autobase24UITests;
+			sourceTree = "<group>";
+		};
+		113739161ECB35EC00D18981 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		113739171ECB35F500D18981 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1137391A1ECB385C00D18981 /* CarsViewController.swift */,
+				1137391D1ECB387000D18981 /* FavoritesViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		113739181ECB360400D18981 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				113738EC1ECB338900D18981 /* Main.storyboard */,
+				113738F11ECB338900D18981 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		113739191ECB366500D18981 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		58E92B07FAD679A275BBF139 /* Frameworks */ = {
@@ -446,8 +483,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				113738EB1ECB338900D18981 /* ViewController.swift in Sources */,
 				113738E91ECB338900D18981 /* AppDelegate.swift in Sources */,
+				1137391E1ECB387000D18981 /* FavoritesViewController.swift in Sources */,
+				1137391B1ECB385C00D18981 /* CarsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +502,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				113739091ECB338900D18981 /* Autobase24UITests.swift in Sources */,
+				1137391F1ECB387000D18981 /* FavoritesViewController.swift in Sources */,
+				1137391C1ECB385C00D18981 /* CarsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +740,7 @@
 				1137390F1ECB338900D18981 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		113739101ECB338900D18981 /* Build configuration list for PBXNativeTarget "Autobase24Tests" */ = {
 			isa = XCConfigurationList;
@@ -708,6 +749,7 @@
 				113739121ECB338900D18981 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		113739131ECB338900D18981 /* Build configuration list for PBXNativeTarget "Autobase24UITests" */ = {
 			isa = XCConfigurationList;
@@ -716,6 +758,7 @@
 				113739151ECB338900D18981 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
