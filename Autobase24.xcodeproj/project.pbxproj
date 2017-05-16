@@ -32,6 +32,10 @@
 		113739321ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */; };
 		113739331ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */; };
 		113739341ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */; };
+		113739371ECB58E800D18981 /* CarSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739351ECB58E800D18981 /* CarSummaryTableViewCell.swift */; };
+		113739381ECB58E800D18981 /* CarSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113739351ECB58E800D18981 /* CarSummaryTableViewCell.swift */; };
+		113739391ECB58E800D18981 /* CarSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113739361ECB58E800D18981 /* CarSummaryTableViewCell.xib */; };
+		1137393A1ECB58E800D18981 /* CarSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113739361ECB58E800D18981 /* CarSummaryTableViewCell.xib */; };
 		16477BB8214A8B11B2F1972A /* Pods_Autobase24.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25FAD77715F0B63263F52D7 /* Pods_Autobase24.framework */; };
 		C39D90F49973C4F5E784DC20 /* Pods_Autobase24Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A2E96735A604BBEB680C02 /* Pods_Autobase24Tests.framework */; };
 		EC1E7F0462461DDB54A6BB1D /* Pods_Autobase24UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682DFE685735554706EB166B /* Pods_Autobase24UITests.framework */; };
@@ -74,6 +78,8 @@
 		113739281ECB40DC00D18981 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		1137392D1ECB4D8100D18981 /* Vehicle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vehicle+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1137392E1ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vehicle+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		113739351ECB58E800D18981 /* CarSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		113739361ECB58E800D18981 /* CarSummaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		682DFE685735554706EB166B /* Pods_Autobase24UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobase24UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A2E96735A604BBEB680C02 /* Pods_Autobase24Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autobase24Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94391D29487340560052DCB3 /* Pods-Autobase24UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autobase24UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Autobase24UITests/Pods-Autobase24UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +197,8 @@
 			children = (
 				113738EC1ECB338900D18981 /* Main.storyboard */,
 				113738F11ECB338900D18981 /* LaunchScreen.storyboard */,
+				113739351ECB58E800D18981 /* CarSummaryTableViewCell.swift */,
+				113739361ECB58E800D18981 /* CarSummaryTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -346,6 +354,7 @@
 				113738F31ECB338900D18981 /* LaunchScreen.storyboard in Resources */,
 				113738F01ECB338900D18981 /* Assets.xcassets in Resources */,
 				113738EE1ECB338900D18981 /* Main.storyboard in Resources */,
+				113739391ECB58E800D18981 /* CarSummaryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1137393A1ECB58E800D18981 /* CarSummaryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +524,7 @@
 				113739251ECB3F6000D18981 /* Autobase24Model.xcdatamodeld in Sources */,
 				113739321ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */,
 				113739291ECB40DC00D18981 /* NetworkingManager.swift in Sources */,
+				113739371ECB58E800D18981 /* CarSummaryTableViewCell.swift in Sources */,
 				1137391E1ECB387000D18981 /* FavoritesViewController.swift in Sources */,
 				1137391B1ECB385C00D18981 /* CarsViewController.swift in Sources */,
 			);
@@ -542,6 +553,7 @@
 				1137391F1ECB387000D18981 /* FavoritesViewController.swift in Sources */,
 				113739341ECB4D8100D18981 /* Vehicle+CoreDataProperties.swift in Sources */,
 				1137391C1ECB385C00D18981 /* CarsViewController.swift in Sources */,
+				113739381ECB58E800D18981 /* CarSummaryTableViewCell.swift in Sources */,
 				1137392B1ECB40DC00D18981 /* NetworkingManager.swift in Sources */,
 				113739271ECB3F6000D18981 /* Autobase24Model.xcdatamodeld in Sources */,
 			);

@@ -104,6 +104,34 @@ class NetworkingManager: NSObject {
         }
     }
     
+    func downloadImage(_ url: URL, completionHandler: @escaping (_ origURL: URL?, _ image: UIImage?, _ error: NSError?) -> Void) {
+        let networker = networking(forUrl: url)
+        var path = url.path
+        
+        if let query = url.query {
+            path += "?\(query)"
+        }
+        
+        networker.downloadImage(path, completion: {(result) in
+            switch result {
+            case .success(let response):
+                // skip from iCloud backups!
+                do {
+                    var destinationURL = try networker.destinationURL(for: path)
+                    var resourceValues = URLResourceValues()
+                    resourceValues.isExcludedFromBackup = true
+                    try destinationURL.setResourceValues(resourceValues)
+                }
+                catch {}
+                completionHandler(url, response.image, nil)
+            case .failure(let response):
+                let error = response.error
+                print("Networking error: \(error)")
+                completionHandler(nil, nil, error)
+            }
+        })
+    }
+
     // MARK: Private methods
     fileprivate func networking(forBaseUrl url: String) -> Networking {
         return Networking(baseURL: url, configurationType: .default)
