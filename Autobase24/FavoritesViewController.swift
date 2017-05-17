@@ -66,7 +66,7 @@ class FavoritesViewController: UIViewController {
                 let cell = cell as? CarSummaryTableViewCell{
                 cell.updateDisplay(vehicle: vehicle)
                 cell.favoriteSwitch.isHidden = true
-                cell.starIcon.isHidden = true
+                cell.starIcon.image = UIImage(named: "star-filled")
             }
         })
         

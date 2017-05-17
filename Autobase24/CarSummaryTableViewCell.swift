@@ -24,9 +24,11 @@ class CarSummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var makeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var addressIcon: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var powerKWLabel: UILabel!
+    @IBOutlet weak var fuelTypeIcon: UIImageView!
     @IBOutlet weak var fuelTypeLabel: UILabel!
     
     // MARK: Actions
@@ -66,10 +68,11 @@ class CarSummaryTableViewCell: UITableViewCell {
         if let images = vehicle.images {
             if let imagesArray = NSKeyedUnarchiver.unarchiveObject(with: images as Data) as? [String] {
                 if let url = URL(string: imagesArray.first!) {
+                    // Download the image in an asynchronous way.
                     NetworkingManager.sharedInstance.downloadImage(url, completionHandler: {(_ origURL: URL?, _ image: UIImage?, _ error: NSError?) -> Void in
                         
                         if let _ = error {
-                            print("image not found")
+                            self.vehicleImage.image = nil
                         } else {
                             if url == origURL {
                                 self.vehicleImage.image = image
@@ -109,7 +112,25 @@ class CarSummaryTableViewCell: UITableViewCell {
             favoriteSwitch.isHidden = false
             favoriteSwitch.isOn = vehicle.favorite
             starIcon.image = vehicle.favorite ? UIImage(named: "star-filled") : UIImage(named: "star")
+            
+            if let image = addressIcon.image {
+                let tintedImage = image.withRenderingMode(.alwaysTemplate)
+                addressIcon.image = tintedImage
+                addressIcon.tintColor = UIColor.black
+            }
+            if let image = fuelTypeIcon.image {
+                let tintedImage = image.withRenderingMode(.alwaysTemplate)
+                fuelTypeIcon.image = tintedImage
+                fuelTypeIcon.tintColor = UIColor.black
+            }
+            if let image = starIcon.image {
+                let tintedImage = image.withRenderingMode(.alwaysTemplate)
+                starIcon.image = tintedImage
+                starIcon.tintColor = UIColor.black
+            }
+        
         } else {
+            // gray out everything
             makeLabel.textColor = UIColor.gray
             priceLabel.textColor = UIColor.gray
             yearLabel.textColor = UIColor.gray
@@ -120,6 +141,22 @@ class CarSummaryTableViewCell: UITableViewCell {
             
             favoriteSwitch.isHidden = true
             starIcon.image = UIImage(named: "crashed car")
+
+            if let image = addressIcon.image {
+                let tintedImage = image.withRenderingMode(.alwaysTemplate)
+                addressIcon.image = tintedImage
+                addressIcon.tintColor = UIColor.gray
+            }
+            if let image = fuelTypeIcon.image {
+                let tintedImage = image.withRenderingMode(.alwaysTemplate)
+                fuelTypeIcon.image = tintedImage
+                fuelTypeIcon.tintColor = UIColor.gray
+            }
+            if let image = starIcon.image {
+                let tintedImage = image.withRenderingMode(.alwaysTemplate)
+                starIcon.image = tintedImage
+                starIcon.tintColor = UIColor.gray
+            }
         }
     }
 }
