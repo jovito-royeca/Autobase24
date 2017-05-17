@@ -95,7 +95,19 @@ class CarSummaryTableViewCell: UITableViewCell {
         } else {
             yearLabel.text = "year -"
         }
-        addressLabel.text = vehicle.address
+        
+        addressLabel.text = nil
+        // Show second after 2 seconds, to simulate heavy computing
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+            // sleep ib bacjground thread
+            sleep(2)
+            
+            // update the address label in main thread
+            DispatchQueue.main.async {
+                self.addressLabel.text = vehicle.address
+            }
+        }
+        
         mileageLabel.text = "\(vehicle.mileage) km"
         powerKWLabel.text = "\(vehicle.powerKW) kW"
         fuelTypeLabel.text = vehicle.fuelType
