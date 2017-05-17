@@ -31,8 +31,8 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * Validation: postprocesses the recieved list and grays out all invalid vehicles. A vehicle is invalid when the AccidentFree property is false. Prevent users from adding an invalid car to the favorites list.
 
 **Multithreading**
-* 7
-* 8
+* Shows the first image of each vehicle. The image is downloaded in an asynchronous way.
+* Shows the Address property of each vehicle, but with a 2 seconds delay. Uses the sleep() function (to simulate a heavy computing). The app is still responsive all the time.
 
 **Architecture**
 * 9
