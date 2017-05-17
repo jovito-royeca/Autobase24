@@ -58,13 +58,13 @@ class CarSummaryTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         vehicleImage.image = nil
         
-        makeLabel.text = nil
-        priceLabel.text = nil
-        yearLabel.text = nil
-        addressLabel.text = nil
-        mileageLabel.text = nil
-        powerKWLabel.text = nil
-        fuelTypeLabel.text = nil
+        makeLabel.text = ""
+        priceLabel.text = ""
+        yearLabel.text = ""
+        addressLabel.text = ""
+        mileageLabel.text = ""
+        powerKWLabel.text = ""
+        fuelTypeLabel.text = ""
         
         makeLabel.textColor = UIColor.black
         priceLabel.textColor = UIColor.black

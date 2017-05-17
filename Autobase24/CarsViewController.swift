@@ -22,14 +22,39 @@ class CarsViewController: UIViewController {
     var dataSource: DATASource?
     var refreshControl:UIRefreshControl?
     var sortByFirstRegistration = true
+    var makeIndex = 0
 
     // MARK: Actions
     @IBAction func sortAction(_ sender: UIBarButtonItem) {
         sortByFirstRegistration = !sortByFirstRegistration
-        
         sortButton.image = sortByFirstRegistration ? UIImage(named: "sort ascending") : UIImage(named: "sort descending")
-        dataSource = getDataSource(nil)
+        
+        
+        var make:String? = nil
+        switch makeIndex {
+        case 1:
+            make = "BMW"
+        case 2:
+            make = "Audi"
+        case 3:
+            make = "Mercedes-Benz"
+        default:
+            ()
+        }
+        
+        let request:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Vehicle")
+        request.sortDescriptors = [NSSortDescriptor(key: "firstRegistrationDate", ascending: self.sortByFirstRegistration)]
+        
+        if let make = make {
+            request.predicate = NSPredicate(format: "make = %@", make)
+        }
+        dataSource = getDataSource(request)
         updateTableBackground()
+    }
+    
+    @IBAction func segmentedAction(_ sender: UISegmentedControl) {
+        makeIndex = sender.selectedSegmentIndex
+        downloadData(showProgress: true)
     }
     
     // MARK: Overrides
@@ -46,13 +71,12 @@ class CarsViewController: UIViewController {
         refreshControl = UIRefreshControl()
         refreshControl!.backgroundColor = UIColor.orange
         refreshControl!.tintColor = UIColor.white
-        refreshControl!.addTarget(self, action: #selector(CarsViewController.downloadData), for: .valueChanged)
+        refreshControl!.addTarget(self, action: #selector(downloadData(showProgress:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
 
         // start download
         updateTableBackground()
-        refreshControl!.beginRefreshing()
-        downloadData()
+        downloadData(showProgress:true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,10 +111,45 @@ class CarsViewController: UIViewController {
         return dataSource
     }
     
-    func downloadData() {
-        APIManager.sharedInstance.fetchCars(completion: { error in
+    func downloadData(showProgress: Bool) {
+        var path:BaseURLPath = .all
+        var make:String? = nil
+        
+        switch makeIndex {
+        case 0:
+            path = .all
+        case 1:
+            path = .bmw
+            make = "BMW"
+        case 2:
+            path = .audi
+            make = "Audi"
+        case 3:
+            path = .mercedes
+            make = "Mercedes-Benz"
+        default:
+            path = .all
+        }
+        
+        if showProgress {
+            MBProgressHUD.showAdded(to: tableView, animated: true)
+        }
+        APIManager.sharedInstance.fetchCars(path: path, completion: { error in
+            let request:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Vehicle")
+            request.sortDescriptors = [NSSortDescriptor(key: "firstRegistrationDate", ascending: self.sortByFirstRegistration)]
+            
+            if let make = make {
+                request.predicate = NSPredicate(format: "make = %@", make)
+            }
+
+            self.dataSource = self.getDataSource(request)
             self.updateTableBackground()
-            self.refreshControl!.endRefreshing()
+            
+            if showProgress {
+                MBProgressHUD.hide(for: self.tableView, animated: true)
+            } else {
+                self.refreshControl!.endRefreshing()
+            }
         })
     }
     

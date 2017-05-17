@@ -12,10 +12,13 @@ import Networking
 import Sync
 
 let BaseURL          = "http://sumamo.de/iOS-TechChallange/api/index"
-let AllCarsPath      = "/make=all.json"
-let AudiCarsPath     = "/make=audi.json"
-let BMWCarsPath      = "/make=bmw.json"
-let MercedesCarsPath = "/make=mercedes-benz.json"
+
+enum BaseURLPath: String {
+    case all  = "/make=all.json",
+    bmw       = "/make=bmw.json",
+    audi      = "/make=audi.json",
+    mercedes  = "/make=mercedes-benz.json"
+}
 
 class APIManager: NSObject {
     // MARK: Variables
@@ -24,7 +27,7 @@ class APIManager: NSObject {
     // MARK: Shared instance
     static let sharedInstance = APIManager()
     
-    func fetchCars(completion: @escaping (NSError?) -> Void) {
+    func fetchCars(path: BaseURLPath, completion: @escaping (NSError?) -> Void) {
         let method:HTTPMethod = .get
         let headers:[String: String]? = nil
         let paramType:Networking.ParameterType = .json
@@ -77,7 +80,7 @@ class APIManager: NSObject {
         }
         
         NetworkingManager.sharedInstance.doOperation(BaseURL,
-                                                     path: AllCarsPath,
+                                                     path: path.rawValue,
                                                      method: method,
                                                      headers: headers,
                                                      paramType: paramType,

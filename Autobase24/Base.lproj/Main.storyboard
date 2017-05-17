@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -86,11 +87,35 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UbL-6X-1bC">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="FYF-uB-KPO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U1t-Aq-ivB">
+                                            <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                            <segments>
+                                                <segment title="All"/>
+                                                <segment title="BMW"/>
+                                                <segment title="Audi"/>
+                                                <segment title="Mercedez Benz"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentedAction:" destination="mWg-W5-fMw" eventType="valueChanged" id="nQc-z3-kZf"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="U1t-Aq-ivB" firstAttribute="leading" secondItem="FYF-uB-KPO" secondAttribute="leadingMargin" id="ZVV-DJ-duS"/>
+                                        <constraint firstItem="U1t-Aq-ivB" firstAttribute="trailing" secondItem="FYF-uB-KPO" secondAttribute="trailingMargin" id="cZN-hO-Cwf"/>
+                                        <constraint firstItem="U1t-Aq-ivB" firstAttribute="top" secondItem="FYF-uB-KPO" secondAttribute="topMargin" id="jT6-Hi-u51"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarSummaryCell" id="Vi4-KS-Jdd" customClass="CarSummaryTableViewCell" customModule="Autobase24" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarSummaryCell" id="Hen-KE-p8L" customClass="CarSummaryTableViewCell" customModule="Autobase24" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vi4-KS-Jdd" id="TTR-zq-1eU">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hen-KE-p8L" id="uDR-fG-ckW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
