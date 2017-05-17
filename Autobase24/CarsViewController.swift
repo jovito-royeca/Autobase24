@@ -17,7 +17,8 @@ class CarsViewController: UIViewController {
     @IBOutlet weak var sortButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundLabel: UILabel!
-
+    @IBOutlet weak var makeSegmentedControl: UISegmentedControl!
+    
     // MARK: Variables
     var dataSource: DATASource?
     var refreshControl:UIRefreshControl?
@@ -28,7 +29,6 @@ class CarsViewController: UIViewController {
     @IBAction func sortAction(_ sender: UIBarButtonItem) {
         sortByFirstRegistration = !sortByFirstRegistration
         sortButton.image = sortByFirstRegistration ? UIImage(named: "sort ascending") : UIImage(named: "sort descending")
-        
         
         var make:String? = nil
         switch makeIndex {
@@ -71,7 +71,7 @@ class CarsViewController: UIViewController {
         refreshControl = UIRefreshControl()
         refreshControl!.backgroundColor = UIColor.orange
         refreshControl!.tintColor = UIColor.white
-        refreshControl!.addTarget(self, action: #selector(downloadData(showProgress:)), for: .valueChanged)
+        refreshControl!.addTarget(self, action: #selector(refreshAction(sender:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
 
         // start download
@@ -109,6 +109,17 @@ class CarsViewController: UIViewController {
         })
         
         return dataSource
+    }
+    
+    func refreshAction(sender: UIRefreshControl) {
+        // cycle through the index for every refresh
+        makeIndex = makeSegmentedControl.selectedSegmentIndex + 1
+        if makeIndex > makeSegmentedControl.numberOfSegments - 1 {
+            makeIndex = 0
+        }
+        makeSegmentedControl.selectedSegmentIndex = makeIndex
+        
+        downloadData(showProgress: false)
     }
     
     func downloadData(showProgress: Bool) {

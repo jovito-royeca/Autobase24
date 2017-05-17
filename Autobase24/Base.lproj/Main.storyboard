@@ -143,6 +143,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundLabel" destination="EfD-eK-1qk" id="yLS-Gi-EyL"/>
+                        <outlet property="makeSegmentedControl" destination="U1t-Aq-ivB" id="DBN-qt-oP3"/>
                         <outlet property="sortButton" destination="gKe-qm-EHQ" id="76U-lY-JpJ"/>
                         <outlet property="tableView" destination="UbL-6X-1bC" id="5Jf-wm-pOV"/>
                     </connections>
