@@ -91,6 +91,16 @@ class FavoritesViewController: UIViewController {
         super.viewDidAppear(animated)
         
         origY = view.frame.origin.y
+        
+        // remove the badges
+        navigationController?.tabBarItem.badgeValue = nil
+        if let tabBar = navigationController?.parent as? UITabBarController {
+            if let carsNVC = tabBar.viewControllers?.first {
+                if let carsVC = carsNVC.childViewControllers.first as? CarsViewController {
+                    carsVC.newCars.removeAll()
+                }
+            }
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

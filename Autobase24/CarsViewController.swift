@@ -24,6 +24,7 @@ class CarsViewController: UIViewController {
     var refreshControl:UIRefreshControl?
     var sortByFirstRegistration = true
     var makeIndex = 0
+    var newCars = Set<Vehicle>()
 
     // MARK: Actions
     @IBAction func sortAction(_ sender: UIBarButtonItem) {
@@ -192,5 +193,18 @@ extension CarsViewController : CarSummaryTableViewCellDelegate {
     func toggle(vehicle: Vehicle, favorite: Bool) {
         vehicle.favorite = favorite
         try! APIManager.sharedInstance.dataStack.mainContext.save()
+        
+        if favorite {
+            newCars.insert(vehicle)
+        } else {
+            newCars.remove(vehicle)
+        }
+        
+        // add badge
+        if let tabBar = navigationController?.parent as? UITabBarController {
+            if let favoritesNVC = tabBar.viewControllers?[1] {
+                favoritesNVC.tabBarItem.badgeValue = newCars.count > 0 ? "\(newCars.count)" : nil
+            }
+        }
     }
 }
