@@ -27,7 +27,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 
 **Data Handling**
 * 4
-* 5
+* Sorting: postprocesses the received list and sorts the vehicles by their FirstRegistration property. When it's tapped, it reverses the order of the list. Displays the FirstRegistration date of each vehicle in the list.
 * Validation: postprocesses the recieved list and grays out all invalid vehicles. A vehicle is invalid when the AccidentFree property is false. Prevent users from adding an invalid car to the favorites list.
 
 **Multithreading**
