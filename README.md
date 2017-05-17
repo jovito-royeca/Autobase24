@@ -9,10 +9,10 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * List of favorites: shows all the cars which are favorited. Each item on this list has a delete button. When the delete button is tapped, that car is removed from the favorites list. This should be reflected on the cars list.
 
 **Networking**
-* Data is fetched from: http://sumamo.de/iOS-TechChallange/api/index/make=all.json
+* Data is fetched from: http://sumamo.de/iOS-TechChallange/api/index/make=all.json . Networking code is handled by the [Networking](https://github.com/3lvis/Networking) library.
 
 **Data handling**
-* Persistence layer is handled by Core Data, which is utilized by the favorites list. When the app terminates for any reason and is restarted, the favorites list maintains a consistent state.
+* Persistence layer is handled by Core Data, which is utilized by the favorites list. When the app terminates for any reason and is restarted, the favorites list maintains a consistent state. Handling Core Data is made easier by using [SyncDB](https://github.com/SyncDB/Sync).
 
 **Multithreading**
 * User interface is responsive and smooth at all times.
