@@ -26,7 +26,8 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * 3
 
 **Data Handling**
-* 4
+* Utilizes the make parameter of the datasource of the car list screen. It has 4 values: All, BMW, Audi, Mercedes-Benz. The app should pick cyclically one out of this 4 with every refresh
+(http://sumamo.de/iOS-TechChallange/api/index/make=all|bmw|audi|mercedes-benz.json). Reflects the proper state for each car after the list is refreshed.
 * Sorting: postprocesses the received list and sorts the vehicles by their FirstRegistration property. When it's tapped, it reverses the order of the list. Displays the FirstRegistration date of each vehicle in the list.
 * Validation: postprocesses the recieved list and grays out all invalid vehicles. A vehicle is invalid when the AccidentFree property is false. Prevent users from adding an invalid car to the favorites list.
 
