@@ -14,12 +14,23 @@ import MBProgressHUD
 class CarsViewController: UIViewController {
 
     // MARK: Outlets
+    @IBOutlet weak var sortButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundLabel: UILabel!
-    
+
     // MARK: Variables
     var dataSource: DATASource?
     var refreshControl:UIRefreshControl?
+    var sortByFirstRegistration = true
+
+    // MARK: Actions
+    @IBAction func sortAction(_ sender: UIBarButtonItem) {
+        sortByFirstRegistration = !sortByFirstRegistration
+        
+        sortButton.image = sortByFirstRegistration ? UIImage(named: "sort ascending") : UIImage(named: "sort descending")
+        dataSource = getDataSource(nil)
+        updateTableBackground()
+    }
     
     // MARK: Overrides
     override func viewDidLoad() {
@@ -62,7 +73,7 @@ class CarsViewController: UIViewController {
             request = fetchRequest
         } else {
             request = NSFetchRequest(entityName: "Vehicle")
-            request!.sortDescriptors = [NSSortDescriptor(key: "firstRegistration", ascending: true)]
+            request!.sortDescriptors = [NSSortDescriptor(key: "firstRegistrationDate", ascending: sortByFirstRegistration)]
         }
         
         let dataSource = DATASource(tableView: tableView, cellIdentifier: "CarSummaryCell", fetchRequest: request!, mainContext: APIManager.sharedInstance.dataStack.mainContext, sectionName: nil, configuration: { cell, item, indexPath in

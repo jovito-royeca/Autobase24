@@ -11,8 +11,11 @@ import DATAStack
 import Networking
 import Sync
 
-let BaseURL     = "http://sumamo.de/iOS-TechChallange/api/index"
-let AllCarsPath = "/make=all.json"
+let BaseURL          = "http://sumamo.de/iOS-TechChallange/api/index"
+let AllCarsPath      = "/make=all.json"
+let AudiCarsPath     = "/make=audi.json"
+let BMWCarsPath      = "/make=bmw.json"
+let MercedesCarsPath = "/make=mercedes-benz.json"
 
 class APIManager: NSObject {
     // MARK: Variables
@@ -38,7 +41,21 @@ class APIManager: NSObject {
                 
                 if let first = result.first {
                     if let vehicles = first["vehicles"] as? [[String : Any]] {
-                        data = vehicles
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "MM/yyyy"
+                        
+                        for vehicle in vehicles {
+                            var dict = [String : Any]()
+                            
+                            for (k,v) in vehicle {
+                                dict[k] = v
+                                
+                                if k == "FirstRegistration" {
+                                    dict["firstRegistrationDate"] = formatter.date(from: v as! String)
+                                }
+                            }
+                            data.append(dict)
+                        }
                     }
                 }
                 

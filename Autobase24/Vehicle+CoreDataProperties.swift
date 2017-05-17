@@ -18,6 +18,7 @@ extension Vehicle {
 
     @NSManaged public var id: Int32
     @NSManaged public var firstRegistration: String?
+    @NSManaged public var firstRegistrationDate: Date?
     @NSManaged public var accidentFree: Bool
     @NSManaged public var images: NSData?
     @NSManaged public var powerKW: Int32

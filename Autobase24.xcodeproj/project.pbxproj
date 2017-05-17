@@ -59,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		111E81951ECC256F0070043A /* Autobase24Model 18-05- 2017.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Autobase24Model 18-05- 2017.xcdatamodel"; sourceTree = "<group>"; };
 		113738E51ECB338900D18981 /* Autobase24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autobase24.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		113738E81ECB338900D18981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		113738ED1ECB338900D18981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -819,10 +820,11 @@
 		113739231ECB3F6000D18981 /* Autobase24Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				111E81951ECC256F0070043A /* Autobase24Model 18-05- 2017.xcdatamodel */,
 				1137393B1ECB6EC900D18981 /* Autobase24Model 17-05-2017.xcdatamodel */,
 				113739241ECB3F6000D18981 /* Autobase24Model.xcdatamodel */,
 			);
-			currentVersion = 1137393B1ECB6EC900D18981 /* Autobase24Model 17-05-2017.xcdatamodel */;
+			currentVersion = 111E81951ECC256F0070043A /* Autobase24Model 18-05- 2017.xcdatamodel */;
 			path = Autobase24Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
