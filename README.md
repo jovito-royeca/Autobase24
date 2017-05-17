@@ -18,17 +18,30 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * User interface is responsive and smooth at all times.
 
 ### Additional Features
-* 1
+**UI**
+* All of the assets (labels, images) are displayed nicely (no cuts, same size). The app reflects an easy to use and consistent interface.
 * 2
+
+**Networking**
 * 3
+
+**Data Handling**
 * 4
 * 5
 * Validation: postprocesses the recieved list and grays out all invalid vehicles. A vehicle is invalid when the AccidentFree property is false. Prevent users from adding an invalid car to the favorites list.
+
+**Multithreading**
 * 7
 * 8
+
+**Architecture**
 * 9
 * 10
+
+**Testing**
 * 11
+
+**UI Testing**
 * 12
 
 ## Cloning
