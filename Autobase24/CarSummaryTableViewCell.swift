@@ -55,6 +55,37 @@ class CarSummaryTableViewCell: UITableViewCell {
         fuelTypeLabel.adjustsFontSizeToFitWidth = true
     }
 
+    override func prepareForReuse() {
+        vehicleImage.image = nil
+        
+        makeLabel.text = nil
+        priceLabel.text = nil
+        yearLabel.text = nil
+        addressLabel.text = nil
+        mileageLabel.text = nil
+        powerKWLabel.text = nil
+        fuelTypeLabel.text = nil
+        
+        makeLabel.textColor = UIColor.black
+        priceLabel.textColor = UIColor.black
+        yearLabel.textColor = UIColor.black
+        addressLabel.textColor = UIColor.black
+        mileageLabel.textColor = UIColor.black
+        powerKWLabel.textColor = UIColor.black
+        fuelTypeLabel.textColor = UIColor.black
+        
+        if let image = addressIcon.image {
+            let tintedImage = image.withRenderingMode(.alwaysTemplate)
+            addressIcon.image = tintedImage
+            addressIcon.tintColor = UIColor.black
+        }
+        if let image = fuelTypeIcon.image {
+            let tintedImage = image.withRenderingMode(.alwaysTemplate)
+            fuelTypeIcon.image = tintedImage
+            fuelTypeIcon.tintColor = UIColor.black
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -71,33 +102,30 @@ class CarSummaryTableViewCell: UITableViewCell {
                     // Download the image in an asynchronous way.
                     NetworkingManager.sharedInstance.downloadImage(url, completionHandler: {(_ origURL: URL?, _ image: UIImage?, _ error: NSError?) -> Void in
                         
-                        if let _ = error {
-                            self.vehicleImage.image = nil
-                        } else {
+                        if error == nil{
                             if url == origURL {
                                 self.vehicleImage.image = image
                             }
                         }
                     })
                 }
-            } else {
-                vehicleImage.image = nil
             }
-            
-        } else {
-            vehicleImage.image = nil
         }
         
         makeLabel?.text = vehicle.make
-        priceLabel?.text = "\u{20AC} \(vehicle.price)"
+        
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale(identifier: "de_DE")
+        priceLabel.text = currencyFormatter.string(from: NSNumber(value: vehicle.price)) //"\u{20AC} \(vehicle.price)"
+        
         if let firstRegistration = vehicle.firstRegistration {
             yearLabel.text = "year \(firstRegistration)"
         } else {
             yearLabel.text = "year -"
         }
         
-        addressLabel.text = nil
-        // Show second after 2 seconds, to simulate heavy computing
+        // Show address after 2 seconds, to simulate heavy computing
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             // sleep ib bacjground thread
             sleep(2)
@@ -108,33 +136,18 @@ class CarSummaryTableViewCell: UITableViewCell {
             }
         }
         
-        mileageLabel.text = "\(vehicle.mileage) km"
-        powerKWLabel.text = "\(vehicle.powerKW) kW"
+        mileageLabel.text = String.localizedStringWithFormat("%i km", vehicle.mileage)
+        
+        let kWTohp = 1.3596216173039
+        let hp = Int(Double(vehicle.powerKW) * kWTohp)
+        powerKWLabel.text = "\(vehicle.powerKW) kW (\(hp) hp)"
         fuelTypeLabel.text = vehicle.fuelType
         
         if vehicle.accidentFree {
-            makeLabel.textColor = UIColor.black
-            priceLabel.textColor = UIColor.black
-            yearLabel.textColor = UIColor.black
-            addressLabel.textColor = UIColor.black
-            mileageLabel.textColor = UIColor.black
-            powerKWLabel.textColor = UIColor.black
-            fuelTypeLabel.textColor = UIColor.black
-            
             favoriteSwitch.isHidden = false
             favoriteSwitch.isOn = vehicle.favorite
             starIcon.image = vehicle.favorite ? UIImage(named: "star-filled") : UIImage(named: "star")
             
-            if let image = addressIcon.image {
-                let tintedImage = image.withRenderingMode(.alwaysTemplate)
-                addressIcon.image = tintedImage
-                addressIcon.tintColor = UIColor.black
-            }
-            if let image = fuelTypeIcon.image {
-                let tintedImage = image.withRenderingMode(.alwaysTemplate)
-                fuelTypeIcon.image = tintedImage
-                fuelTypeIcon.tintColor = UIColor.black
-            }
             if let image = starIcon.image {
                 let tintedImage = image.withRenderingMode(.alwaysTemplate)
                 starIcon.image = tintedImage
