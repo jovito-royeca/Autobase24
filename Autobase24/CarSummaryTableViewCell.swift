@@ -59,6 +59,17 @@ class CarSummaryTableViewCell: UITableViewCell {
         mileageLabel.adjustsFontSizeToFitWidth = true
         powerKWLabel.adjustsFontSizeToFitWidth = true
         fuelTypeLabel.adjustsFontSizeToFitWidth = true
+        
+        if let image = addressIcon.image {
+            let tintedImage = image.withRenderingMode(.alwaysTemplate)
+            addressIcon.image = tintedImage
+            addressIcon.tintColor = UIColor.orange
+        }
+        if let image = fuelTypeIcon.image {
+            let tintedImage = image.withRenderingMode(.alwaysTemplate)
+            fuelTypeIcon.image = tintedImage
+            fuelTypeIcon.tintColor = UIColor.orange
+        }
     }
 
     override func prepareForReuse() {
@@ -83,12 +94,12 @@ class CarSummaryTableViewCell: UITableViewCell {
         if let image = addressIcon.image {
             let tintedImage = image.withRenderingMode(.alwaysTemplate)
             addressIcon.image = tintedImage
-            addressIcon.tintColor = UIColor.black
+            addressIcon.tintColor = UIColor.orange
         }
         if let image = fuelTypeIcon.image {
             let tintedImage = image.withRenderingMode(.alwaysTemplate)
             fuelTypeIcon.image = tintedImage
-            fuelTypeIcon.tintColor = UIColor.black
+            fuelTypeIcon.tintColor = UIColor.orange
         }
     }
     

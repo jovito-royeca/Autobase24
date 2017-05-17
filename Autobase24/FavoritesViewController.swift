@@ -16,10 +16,14 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var sortButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundLabel: UILabel!
-
+    @IBOutlet weak var calculatorView: UIView!
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var calculateButton: UIButton!
+    
     // MARK: Variables
     var dataSource: DATASource?
     var sortByFirstRegistration = true
+    var origY = CGFloat(0)
 
     // MARK: Actions
     @IBAction func sortAction(_ sender: UIBarButtonItem) {
@@ -30,6 +34,42 @@ class FavoritesViewController: UIViewController {
         updateTableBackground()
     }
 
+    @IBAction func calculateAction(_ sender: UIButton) {
+        amountTextField.resignFirstResponder()
+        
+        if let dataSource = dataSource,
+            let text = amountTextField.text {
+            let favorites = dataSource.all() as [Vehicle]
+            var amount = 0.0
+            var totalAmount = 0.0
+            
+            if dataSource.all().count == 0 { // reset colors
+                calculatorView.backgroundColor = UIColor.white
+                sender.setTitleColor(UIColor.orange, for: .normal)
+                
+            } else {
+                if text.characters.count > 0 { // procede with calculation
+                    amount = Double(text)!
+                    
+                    for favorite in favorites {
+                        totalAmount += favorite.price
+                    }
+                    
+                    if amount >= totalAmount {
+                        calculatorView.backgroundColor = UIColor.green
+                    } else {
+                        calculatorView.backgroundColor = UIColor.red
+                    }
+                    sender.setTitleColor(UIColor.white, for: .normal)
+                    
+                } else { // reset colors
+                    calculatorView.backgroundColor = UIColor.white
+                    sender.setTitleColor(UIColor.orange, for: .normal)
+                }
+            }
+        }
+    }
+    
     // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +82,20 @@ class FavoritesViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
         updateTableBackground()
+        calculateAction(calculateButton)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        origY = view.frame.origin.y
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,12 +138,63 @@ class FavoritesViewController: UIViewController {
             if dataSource.all().count == 0 {
                 tableView.separatorStyle = .none
                 backgroundLabel.text = "No Favorites currently available. Try adding some at the Cars tab."
+                amountTextField.isEnabled = false
+                calculateButton.isEnabled = false
             } else {
                 tableView.separatorStyle = .singleLine
                 backgroundLabel.text = nil
+                amountTextField.isEnabled = true
+                calculateButton.isEnabled = true
             }
             tableView.reloadData()
         }
+    }
+    
+    //MARK: un/subscription to notifications
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    // MARK: Keyboard
+    func keyboardWillShow(_ notification: Notification) {
+        keyboardDidShow(notification)
+    }
+    
+    func keyboardDidShow(_ notification: Notification) {
+        var newY = origY
+        
+        // raise the amount field above the keyboard
+        if amountTextField.isFirstResponder {
+            newY -= getKeyboardHeight(notification: notification)
+            newY -= amountTextField.frame.origin.y
+        }
+        view.frame.origin.y = newY
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        if amountTextField.isFirstResponder {
+            view.frame.origin.y = origY
+        }
+    }
+    
+    func getKeyboardHeight(notification: Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        var height = keyboardSize.cgRectValue.height
+        
+        if let nav = navigationController {
+            height -= nav.toolbar.frame.size.height
+        }
+        
+        return height
     }
 }
 
@@ -113,6 +217,7 @@ extension FavoritesViewController: DATASourceDelegate {
         favorites[indexPath.row].favorite = false
         try! APIManager.sharedInstance.dataStack.mainContext.save()
         updateTableBackground()
+        calculateAction(calculateButton)
     }
 }
 
