@@ -50,6 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Jyy-p7-C8K">
                         <barButtonItem key="rightBarButtonItem" image="sort ascending" id="uPv-rT-WA8">
+                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="sortAction:" destination="o8f-H7-Ec6" id="uxS-xt-6hT"/>
                             </connections>
@@ -94,11 +95,12 @@
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U1t-Aq-ivB">
                                             <rect key="frame" x="8" y="8" width="359" height="29"/>
                                             <segments>
-                                                <segment title="All"/>
-                                                <segment title="BMW"/>
-                                                <segment title="Audi"/>
-                                                <segment title="Mercedez Benz"/>
+                                                <segment title="" image="all cars"/>
+                                                <segment title="" image="bmw"/>
+                                                <segment title="" image="audi"/>
+                                                <segment title="" image="mercedes-benz"/>
                                             </segments>
+                                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="segmentedAction:" destination="mWg-W5-fMw" eventType="valueChanged" id="nQc-z3-kZf"/>
                                             </connections>
@@ -136,6 +138,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="xXD-EH-cWJ">
                         <barButtonItem key="rightBarButtonItem" image="sort ascending" id="gKe-qm-EHQ">
+                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="sortAction:" destination="mWg-W5-fMw" id="JVm-2R-PyI"/>
                             </connections>
@@ -167,6 +170,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="qBz-vM-I7h" kind="relationship" relationship="viewControllers" id="nBd-6T-c3X"/>
@@ -217,7 +222,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="all cars" width="25" height="25"/>
+        <image name="audi" width="25" height="25"/>
+        <image name="bmw" width="25" height="25"/>
         <image name="car" width="25" height="25"/>
+        <image name="mercedes-benz" width="24" height="24"/>
         <image name="sort ascending" width="25" height="25"/>
     </resources>
 </document>

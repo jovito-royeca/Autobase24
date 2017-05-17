@@ -67,6 +67,11 @@ class FavoritesViewController: UIViewController {
                 cell.updateDisplay(vehicle: vehicle)
                 cell.favoriteSwitch.isHidden = true
                 cell.starIcon.image = UIImage(named: "star-filled")
+                if let image = cell.starIcon.image {
+                    let tintedImage = image.withRenderingMode(.alwaysTemplate)
+                    cell.starIcon.image = tintedImage
+                    cell.starIcon.tintColor = UIColor.orange
+                }
             }
         })
         

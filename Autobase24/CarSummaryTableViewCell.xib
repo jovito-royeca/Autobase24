@@ -29,8 +29,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="lms-qT-THu">
                         <rect key="frame" x="236" y="89" width="25" height="25"/>
                     </imageView>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="star" offImage="star" translatesAutoresizingMaskIntoConstraints="NO" id="c2H-Cd-6UB">
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c2H-Cd-6UB">
                         <rect key="frame" x="263" y="86" width="51" height="31"/>
+                        <color key="onTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="favoriteAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="HzC-yR-bho"/>
                         </connections>

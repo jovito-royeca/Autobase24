@@ -34,6 +34,12 @@ class CarSummaryTableViewCell: UITableViewCell {
     // MARK: Actions
     @IBAction func favoriteAction(_ sender: UISwitch) {
         starIcon.image = sender.isOn ? UIImage(named: "star-filled") : UIImage(named: "star")
+    
+        if let image = starIcon.image {
+            let tintedImage = image.withRenderingMode(.alwaysTemplate)
+            starIcon.image = tintedImage
+            starIcon.tintColor = UIColor.orange
+        }
         
         if let vehicle = vehicle,
             let delegate = delegate {
@@ -151,7 +157,7 @@ class CarSummaryTableViewCell: UITableViewCell {
             if let image = starIcon.image {
                 let tintedImage = image.withRenderingMode(.alwaysTemplate)
                 starIcon.image = tintedImage
-                starIcon.tintColor = UIColor.black
+                starIcon.tintColor = UIColor.orange
             }
         
         } else {
