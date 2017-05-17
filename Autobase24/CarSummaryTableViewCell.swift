@@ -97,7 +97,29 @@ class CarSummaryTableViewCell: UITableViewCell {
         powerKWLabel.text = "\(vehicle.powerKW) kW"
         fuelTypeLabel.text = vehicle.fuelType
         
-        favoriteSwitch.isOn = vehicle.favorite
-        starIcon.image = vehicle.favorite ? UIImage(named: "star-filled") : UIImage(named: "star")
+        if vehicle.accidentFree {
+            makeLabel.textColor = UIColor.black
+            priceLabel.textColor = UIColor.black
+            yearLabel.textColor = UIColor.black
+            addressLabel.textColor = UIColor.black
+            mileageLabel.textColor = UIColor.black
+            powerKWLabel.textColor = UIColor.black
+            fuelTypeLabel.textColor = UIColor.black
+            
+            favoriteSwitch.isHidden = false
+            favoriteSwitch.isOn = vehicle.favorite
+            starIcon.image = vehicle.favorite ? UIImage(named: "star-filled") : UIImage(named: "star")
+        } else {
+            makeLabel.textColor = UIColor.gray
+            priceLabel.textColor = UIColor.gray
+            yearLabel.textColor = UIColor.gray
+            addressLabel.textColor = UIColor.gray
+            mileageLabel.textColor = UIColor.gray
+            powerKWLabel.textColor = UIColor.gray
+            fuelTypeLabel.textColor = UIColor.gray
+            
+            favoriteSwitch.isHidden = true
+            starIcon.image = UIImage(named: "crashed car")
+        }
     }
 }
