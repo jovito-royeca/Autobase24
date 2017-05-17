@@ -20,7 +20,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 ### Additional Features
 **UI**
 * All of the assets (labels, images) are displayed nicely (no cuts, same size). The app reflects an easy to use and consistent interface.
-* 2
+* Floating bar on the bottom of the favorite list. It contains an input textfield and a "Calculate" button next to each other. The user can input a number here. When the user presses the "Calculate" button, the bar becomes green if the entered amount is equal or bigger than the sum of prices of the cars on the list. Otherwise it becomes red.
 
 **Networking**
 * 3
