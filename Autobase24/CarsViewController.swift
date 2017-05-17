@@ -19,21 +19,29 @@ class CarsViewController: UIViewController {
     
     // MARK: Variables
     var dataSource: DATASource?
+    var refreshControl:UIRefreshControl?
     
     // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        dataSource = self.getDataSource(nil)
+        
         tableView.register(UINib(nibName: "CarSummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "CarSummaryCell")
         tableView.backgroundView = backgroundLabel
 
-        MBProgressHUD.showAdded(to: tableView, animated: true)
-        APIManager.sharedInstance.fetchCars(completion: { error in
-            self.dataSource = self.getDataSource(nil)
-            self.updateTableBackground()
-            MBProgressHUD.hide(for: self.tableView, animated: true)
-        })
+        // init the refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl!.backgroundColor = UIColor.orange
+        refreshControl!.tintColor = UIColor.white
+        refreshControl!.addTarget(self, action: #selector(CarsViewController.downloadData), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+
+        // start download
+        updateTableBackground()
+        refreshControl!.beginRefreshing()
+        downloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +55,7 @@ class CarsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: CUstom methods
+    // MARK: Custom methods
     func getDataSource(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>?) -> DATASource? {
         var request:NSFetchRequest<NSFetchRequestResult>?
         if let fetchRequest = fetchRequest {
@@ -66,6 +74,13 @@ class CarsViewController: UIViewController {
         })
         
         return dataSource
+    }
+    
+    func downloadData() {
+        APIManager.sharedInstance.fetchCars(completion: { error in
+            self.updateTableBackground()
+            self.refreshControl!.endRefreshing()
+        })
     }
     
     func updateTableBackground() {
