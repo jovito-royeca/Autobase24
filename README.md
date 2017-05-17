@@ -37,7 +37,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 
 **Architecture**
 * 9
-* 10
+* Adds a badge to the tab bar favorites list item. The badge represents the number of vehicles that have been added to the favorites list since it was last viewed. When the user switches to the favorites list, the badge disappears.
 
 **Testing**
 * 11
