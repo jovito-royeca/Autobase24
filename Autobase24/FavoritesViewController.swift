@@ -14,6 +14,7 @@ class FavoritesViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundLabel: UILabel!
 
     // MARK: Variables
     var dataSource: DATASource?
@@ -24,13 +25,13 @@ class FavoritesViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "CarSummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "CarSummaryCell")
+        tableView.backgroundView = backgroundLabel
         dataSource = getDataSource(nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        tableView.reloadData()
+        updateTableBackground()
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,8 +60,21 @@ class FavoritesViewController: UIViewController {
         })
         
         dataSource.delegate = self
-        
+
         return dataSource
+    }
+    
+    func updateTableBackground() {
+        if let dataSource = dataSource {
+            if dataSource.all().count == 0 {
+                tableView.separatorStyle = .none
+                backgroundLabel.text = "No Favorites currently available. Try adding some at the Cars tab."
+            } else {
+                tableView.separatorStyle = .singleLine
+                backgroundLabel.text = nil
+            }
+            tableView.reloadData()
+        }
     }
 }
 
@@ -82,6 +96,7 @@ extension FavoritesViewController: DATASourceDelegate {
         let favorites = dataSource.all() as [Vehicle]
         favorites[indexPath.row].favorite = false
         try! APIManager.sharedInstance.dataStack.mainContext.save()
+        updateTableBackground()
     }
 }
 

@@ -15,7 +15,8 @@ class CarsViewController: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var backgroundLabel: UILabel!
+    
     // MARK: Variables
     var dataSource: DATASource?
     
@@ -25,11 +26,12 @@ class CarsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "CarSummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "CarSummaryCell")
+        tableView.backgroundView = backgroundLabel
 
         MBProgressHUD.showAdded(to: tableView, animated: true)
         APIManager.sharedInstance.fetchCars(completion: { error in
             self.dataSource = self.getDataSource(nil)
-            self.tableView.reloadData()
+            self.updateTableBackground()
             MBProgressHUD.hide(for: self.tableView, animated: true)
         })
     }
@@ -37,7 +39,7 @@ class CarsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.reloadData()
+        updateTableBackground()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +66,21 @@ class CarsViewController: UIViewController {
         })
         
         return dataSource
+    }
+    
+    func updateTableBackground() {
+        if let dataSource = dataSource {
+            
+            if dataSource.all().count == 0 {
+                tableView.separatorStyle = .none
+                backgroundLabel.text = "No data is currently available. You may pull down to refresh."
+            } else {
+                tableView.separatorStyle = .singleLine
+                backgroundLabel.text = nil
+            }
+            
+            tableView.reloadData()
+        }
     }
 }
 
