@@ -51,11 +51,23 @@ class CarsViewController: UIViewController {
         }
         dataSource = getDataSource(request)
         updateTableBackground()
+        
+        // track action
+        let screenName = String(describing: type(of: self))
+        let action = "sort"
+        let details = sortByFirstRegistration ? "ascending" : "descending"
+        TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
     
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
         makeIndex = sender.selectedSegmentIndex
         downloadData(showProgress: true)
+        
+        // track action
+        let screenName = String(describing: type(of: self))
+        let action = "changeMake"
+        let details = "\(makeIndex)"
+        TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
     
     // MARK: Overrides
@@ -121,6 +133,12 @@ class CarsViewController: UIViewController {
         makeSegmentedControl.selectedSegmentIndex = makeIndex
         
         downloadData(showProgress: false)
+        
+        // track action
+        let screenName = String(describing: type(of: self))
+        let action = "pull-refresh"
+        let details = "\(makeIndex)"
+        TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
     
     func downloadData(showProgress: Bool) {
@@ -206,5 +224,11 @@ extension CarsViewController : CarSummaryTableViewCellDelegate {
                 favoritesNVC.tabBarItem.badgeValue = newCars.count > 0 ? "\(newCars.count)" : nil
             }
         }
+        
+        // track action
+        let screenName = String(describing: type(of: self))
+        let action = "favorite"
+        let details = "id: \(vehicle.id), \(favorite)"
+        TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
 }

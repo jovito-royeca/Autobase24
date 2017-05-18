@@ -32,11 +32,18 @@ class FavoritesViewController: UIViewController {
         sortButton.image = sortByFirstRegistration ? UIImage(named: "sort ascending") : UIImage(named: "sort descending")
         dataSource = getDataSource(nil)
         updateTableBackground()
+        
+        // track action
+        let screenName = String(describing: type(of: self))
+        let action = "sort"
+        let details = sortByFirstRegistration ? "ascending" : "descending"
+        TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
 
     @IBAction func calculateAction(_ sender: UIButton) {
         amountTextField.resignFirstResponder()
-        
+        var result = "reset"
+
         if let dataSource = dataSource,
             let text = amountTextField.text {
             let favorites = dataSource.all() as [Vehicle]
@@ -57,8 +64,10 @@ class FavoritesViewController: UIViewController {
                     
                     if amount >= totalAmount {
                         calculatorView.backgroundColor = UIColor.green
+                        result = "green"
                     } else {
                         calculatorView.backgroundColor = UIColor.red
+                        result = "red"
                     }
                     sender.setTitleColor(UIColor.white, for: .normal)
                     
@@ -68,6 +77,12 @@ class FavoritesViewController: UIViewController {
                 }
             }
         }
+        
+        // track action
+        let screenName = String(describing: type(of: self))
+        let action = "calculate"
+        let details = result
+        TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
     
     // MARK: Overrides
@@ -228,6 +243,12 @@ extension FavoritesViewController: DATASourceDelegate {
         try! APIManager.sharedInstance.dataStack.mainContext.save()
         updateTableBackground()
         calculateAction(calculateButton)
+        
+        // track action
+        let screenName = String(describing: type(of: self))
+        let action = "delete"
+        let details = "\(favorites[indexPath.row].id)"
+        TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
 }
 
