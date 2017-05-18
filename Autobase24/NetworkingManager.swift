@@ -134,7 +134,7 @@ class NetworkingManager: NSObject {
 
     // MARK: Private methods
     fileprivate func networking(forBaseUrl url: String) -> Networking {
-        return Networking(baseURL: url, configurationType: .default)
+        return Networking(baseURL: url, configurationType: .ephemeral)
     }
     
     fileprivate func networking(forUrl url: URL) -> Networking {
@@ -147,6 +147,6 @@ class NetworkingManager: NSObject {
             baseUrl.append(host)
         }
         
-        return Networking(baseURL: baseUrl, configurationType: .default)
+        return Networking(baseURL: baseUrl, configurationType: .ephemeral)
     }
 }
