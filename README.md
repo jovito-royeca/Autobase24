@@ -14,7 +14,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * Data is fetched from: http://sumamo.de/iOS-TechChallange/api/index/make=all.json . Networking code is handled by the [Networking](https://github.com/3lvis/Networking) library.
 
 **Data handling**
-* Persistence layer is handled by Core Data, which is utilized by the favorites list. When the app terminates for any reason and is restarted, the favorites list maintains a consistent state. Handling Core Data is made easier by using [SyncDB](https://github.com/SyncDB/Sync).
+* Persistence layer is handled by Core Data, which is utilized by the favorites list. When the app terminates for any reason and is restarted, the favorites list maintains a consistent state. Handling Core Data is made easier by using [SyncDB](https://github.com/SyncDB/Sync) library.
 
 **Multithreading**
 * User interface is responsive and smooth at all times.
@@ -25,7 +25,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * Floating bar on the bottom of the favorite list. It contains an input textfield and a "Calculate" button next to each other. The user can input a number here. When the user presses the "Calculate" button, the bar becomes green if the entered amount is equal or bigger than the sum of prices of the cars on the list. Otherwise it becomes red.
 
 **Networking**
-* 3
+* Each and every response of a request ignores locally or remotely cached data. This is achieved by setting the configuration of [Networking](https://github.com/3lvis/Networking) library to ephemeral.
 
 **Data Handling**
 * Utilizes the make parameter of the datasource of the car list screen. It has 4 values: All, BMW, Audi, Mercedes-Benz. The app should pick cyclically one out of this 4 with every refresh
