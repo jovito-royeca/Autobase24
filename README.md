@@ -14,7 +14,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * Data is fetched from: http://sumamo.de/iOS-TechChallange/api/index/make=all.json . Networking code is handled by the [Networking](https://github.com/3lvis/Networking) library.
 
 **Data handling**
-* Persistence layer is handled by Core Data, which is utilized by the favorites list. When the app terminates for any reason and is restarted, the favorites list maintains a consistent state. Handling Core Data is made easier by using [SyncDB](https://github.com/SyncDB/Sync) library.
+* Persistence layer is handled by Core Data, which is utilized by the favorites list. When the app terminates for any reason and is restarted, the favorites list maintains a consistent state. Handling Core Data is made easier by using the  [SyncDB](https://github.com/SyncDB/Sync) library.
 
 **Multithreading**
 * User interface is responsive and smooth at all times.
@@ -42,7 +42,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * Adds a badge to the tab bar favorites list item. The badge represents the number of vehicles that have been added to the favorites list since it was last viewed. When the user switches to the favorites list, the badge disappears.
 
 **Testing**
-* 11
+* Unit tests covers fetching of JSON data from the server, saving to Core Data, and filtering via make parameter.
 
 **UI Testing**
 * 12
