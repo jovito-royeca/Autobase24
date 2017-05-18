@@ -7,8 +7,8 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 ## Features
 ### Basic Features
 **UI**
-* List of cars: shows the following car properties: Price, Milage, Make, FuelType. Introduce a Pull-to-refresh mechanism for this list with an activity indicator. Each car on the list has a favorite [Switch](https://developer.apple.com/ios/human-interface-guidelines/ui-controls/switches/). When it's switched on, the car is added to the favorites list. When it's switched off, the car is removed from the favorites list.
-* List of favorites: shows all the cars which are favorited. Each item on this list has a delete button. When the delete button is tapped, that car is removed from the favorites list. This should be reflected on the cars list.
+* List of cars: shows the following car properties: Make, Price, FirstRegistration, Address, Milage, PowerKW, FuelType. There is a Pull-to-refresh mechanism for this list with an activity indicator. Each car on the list has a favorite [Switch](https://developer.apple.com/ios/human-interface-guidelines/ui-controls/switches/). When it's switched on, the car is added to the favorites list. When it's switched off, the car is removed from the favorites list.
+* List of favorites: shows all the cars which are favorited. Each item on this list has a delete button. When the delete button is tapped, that car is removed from the favorites list. This should be reflected on the cars list. Note: user must swipe-left to reveal the Delete button.
 
 **Networking**
 * Data is fetched from: http://sumamo.de/iOS-TechChallange/api/index/make=all.json . Networking code is handled by the [Networking](https://github.com/3lvis/Networking) library.
@@ -45,7 +45,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * Unit tests covers fetching of JSON data from the server, saving to Core Data, and filtering via make parameter.
 
 **UI Testing**
-* 12
+* UI tests recreates normal user interactions with the app.
 
 ## Cloning
 Clone the GitHub repository and open the project workspace `Autobase24.xcworkspace`.
