@@ -38,7 +38,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * Shows the Address property of each vehicle, but with a 2 seconds delay. Uses the sleep() function (to simulate a heavy computing). The app is still responsive all the time.
 
 **Architecture**
-* 9
+* Tracking utility: tracks all the user interaction (all of the touches). When the app goes to the background, it prints all the user interaction events on the console with meaningful names.
 * Adds a badge to the tab bar favorites list item. The badge represents the number of vehicles that have been added to the favorites list since it was last viewed. When the user switches to the favorites list, the badge disappears.
 
 **Testing**
