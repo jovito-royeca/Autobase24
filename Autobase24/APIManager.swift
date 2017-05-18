@@ -107,16 +107,4 @@ class APIManager: NSObject {
             }
         }
     }
-    
-    func format(_ interval: TimeInterval) -> String {
-        
-        if interval == 0 {
-            return "HH:mm:ss"
-        }
-        
-        let seconds = interval.truncatingRemainder(dividingBy: 60)
-        let minutes = (interval / 60).truncatingRemainder(dividingBy: 60)
-        let hours = (interval / 3600)
-        return String(format: "%.2d:%.2d:%.2d", Int(hours), Int(minutes), Int(seconds))
-    }
 }

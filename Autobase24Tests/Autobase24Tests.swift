@@ -34,24 +34,91 @@ class Autobase24Tests: XCTestCase {
         }
     }
     
-    func testFetchCars() {
-        print("docsPath = \(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])")
+    // MARK: Fetch data tests
+    
+    /*
+     * Test if we fetched and saved all vehicles to Core Data
+     */
+    func testFetchAllCars() {
+        let expectation = self.expectation(description: "fetch all cars")
         
-        let expectation = self.expectation(description: "fetch cars")
-        
-        APIManager.sharedInstance.fetchCars(completion: { error in
+        APIManager.sharedInstance.fetchCars(path: .all, completion: { error in
             XCTAssert(error == nil)
             
             // check if we saved the vehicles in Core Data
             let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Vehicle")
-            request.sortDescriptors = [NSSortDescriptor(key: "firstRegistration", ascending: true)]
+            request.sortDescriptors = [NSSortDescriptor(key: "firstRegistrationDate", ascending: true)]
             
-            if let vehicles = try! APIManager.sharedInstance.dataStack.mainContext.fetch(request) as? [Vehicle] {
-                print("vehicles = \(vehicles.count)")
-            } else {
-                print("no vehicles found")
-            }
+            let vehicles = try! APIManager.sharedInstance.dataStack.mainContext.fetch(request)
+            XCTAssert(vehicles.count > 0)
+            print("all vehicles = \(vehicles.count)")
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10.0, handler: nil)
+    }
+    
+    /*
+     * Test if we fetched and saved the BMW vehicles to Core Data
+     */
+    func testFetchBWM() {
+        let expectation = self.expectation(description: "fetch bmw")
+        
+        APIManager.sharedInstance.fetchCars(path: .bmw, completion: { error in
+            XCTAssert(error == nil)
             
+            // check if we saved the vehicles in Core Data
+            let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Vehicle")
+            request.sortDescriptors = [NSSortDescriptor(key: "firstRegistrationDate", ascending: true)]
+            request.predicate = NSPredicate(format: "make = %@", "BMW")
+            
+            let vehicles = try! APIManager.sharedInstance.dataStack.mainContext.fetch(request)
+            XCTAssert(vehicles.count > 0)
+            print("bmw vehicles = \(vehicles.count)")
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10.0, handler: nil)
+    }
+
+    /*
+     * Test if we fetched and saved the Audi vehicles to Core Data
+     */
+    func testFetchAudi() {
+        let expectation = self.expectation(description: "fetch audi")
+        
+        APIManager.sharedInstance.fetchCars(path: .audi, completion: { error in
+            XCTAssert(error == nil)
+            
+            let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Vehicle")
+            request.sortDescriptors = [NSSortDescriptor(key: "firstRegistrationDate", ascending: true)]
+            request.predicate = NSPredicate(format: "make = %@", "Audi")
+            
+            let vehicles = try! APIManager.sharedInstance.dataStack.mainContext.fetch(request)
+            XCTAssert(vehicles.count > 0)
+            print("audi vehicles = \(vehicles.count)")
+            expectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 10.0, handler: nil)
+    }
+
+    /*
+     * Test if we fetched and saved the Mercedes-Benz vehicles to Core Data
+     */
+    func testFetchMercedesNenz() {
+        let expectation = self.expectation(description: "fetch mercedes-benz")
+        
+        APIManager.sharedInstance.fetchCars(path: .mercedes, completion: { error in
+            XCTAssert(error == nil)
+            
+            let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Vehicle")
+            request.sortDescriptors = [NSSortDescriptor(key: "firstRegistrationDate", ascending: true)]
+            request.predicate = NSPredicate(format: "make = %@", "Mercedes-Benz")
+            
+            let vehicles = try! APIManager.sharedInstance.dataStack.mainContext.fetch(request)
+            XCTAssert(vehicles.count > 0)
+            print("mercedes vehicles = \(vehicles.count)")
             expectation.fulfill()
         })
         
