@@ -1,3 +1,5 @@
+![Autobase24](https://raw.github.com/jovito-royeca/Autobase24/master/icons/appicon-logo/ios/Icon%402x.png)
+
 # Autobase24
 
 An iOS app that displays and saves your favorite cars. This is the Tech Challenge part of my application for Senior iOS Engineer (m/f) at [Scout24](http://www.scout24.com).
