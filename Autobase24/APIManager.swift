@@ -20,6 +20,10 @@ enum BaseURLPath: String {
     mercedes  = "/make=mercedes-benz.json"
 }
 
+/*
+ * This class handles fetching of data from the server.
+ *
+ */
 class APIManager: NSObject {
     // MARK: Variables
     let dataStack = DATAStack(modelName: "Autobase24Model")
@@ -27,6 +31,14 @@ class APIManager: NSObject {
     // MARK: Shared instance
     static let sharedInstance = APIManager()
     
+    /*
+     * Fetches data from the server. Note that the String property firstRegistration is saved as a Date property
+     * in firstRegistrationDate to enable correct sorting. SyncDB (https://github.com/SyncDB/Sync) easily handles
+     * parsing and saving JSON data from the server to Core Data
+     *
+     * @param path Filter for the make property
+     * @param completion Block that is called after the data is fetched from the server
+     */
     func fetchCars(path: BaseURLPath, completion: @escaping (NSError?) -> Void) {
         let method:HTTPMethod = .get
         let headers:[String: String]? = nil
@@ -90,6 +102,11 @@ class APIManager: NSObject {
     }
     
     // MARK: Custom methods
+
+    /*
+     * Prints Core Data operations.
+     *
+     */
     func changeNotification(_ notification: Notification) {
         if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] {
             if let set = updatedObjects as? NSSet {

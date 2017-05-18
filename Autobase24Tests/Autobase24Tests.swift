@@ -38,6 +38,7 @@ class Autobase24Tests: XCTestCase {
     
     /*
      * Test if we fetched and saved all vehicles to Core Data
+     *
      */
     func testFetchAllCars() {
         let expectation = self.expectation(description: "fetch all cars")
@@ -60,6 +61,7 @@ class Autobase24Tests: XCTestCase {
     
     /*
      * Test if we fetched and saved the BMW vehicles to Core Data
+     *
      */
     func testFetchBWM() {
         let expectation = self.expectation(description: "fetch bmw")
@@ -83,6 +85,7 @@ class Autobase24Tests: XCTestCase {
 
     /*
      * Test if we fetched and saved the Audi vehicles to Core Data
+     *
      */
     func testFetchAudi() {
         let expectation = self.expectation(description: "fetch audi")
@@ -105,6 +108,7 @@ class Autobase24Tests: XCTestCase {
 
     /*
      * Test if we fetched and saved the Mercedes-Benz vehicles to Core Data
+     *
      */
     func testFetchMercedesNenz() {
         let expectation = self.expectation(description: "fetch mercedes-benz")

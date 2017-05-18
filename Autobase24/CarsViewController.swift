@@ -22,11 +22,31 @@ class CarsViewController: UIViewController {
     // MARK: Variables
     var dataSource: DATASource?
     var refreshControl:UIRefreshControl?
+    
+    /*
+     * Tracks the sort order. Ascending = true, Descending = false
+     *
+     */
     var sortByFirstRegistration = true
+    
+    /*
+     * Tracks the current selectedIndex of the makeSegmentedControl
+     *
+     */
     var makeIndex = 0
+    
+    /*
+     * Tracks the vehicles added to favorites
+     *
+     */
     var newCars = Set<Vehicle>()
 
     // MARK: Actions
+    
+    /*
+     * Sorts the vehicles via firstRegistrationDate property
+     *
+     */
     @IBAction func sortAction(_ sender: UIBarButtonItem) {
         sortByFirstRegistration = !sortByFirstRegistration
         sortButton.image = sortByFirstRegistration ? UIImage(named: "sort ascending") : UIImage(named: "sort descending")
@@ -59,6 +79,10 @@ class CarsViewController: UIViewController {
         TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
     
+    /*
+     * Triggers fetching data from the server, with the Make property parameter
+     *
+     */
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
         makeIndex = sender.selectedSegmentIndex
         downloadData(showProgress: true)
@@ -104,6 +128,11 @@ class CarsViewController: UIViewController {
     }
     
     // MARK: Custom methods
+
+    /*
+     * Setup the DATASource for Vehicle
+     *
+     */
     func getDataSource(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>?) -> DATASource? {
         var request:NSFetchRequest<NSFetchRequestResult>?
         if let fetchRequest = fetchRequest {
@@ -124,6 +153,10 @@ class CarsViewController: UIViewController {
         return dataSource
     }
     
+    /*
+     * Called when table is pulled up
+     *
+     */
     func refreshAction(sender: UIRefreshControl) {
         // cycle through the index for every refresh
         makeIndex = makeSegmentedControl.selectedSegmentIndex + 1
@@ -141,6 +174,12 @@ class CarsViewController: UIViewController {
         TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
     
+    /*
+     * Fetches data from the server.
+     *
+     * @param showProgress Wether to show the MBProgressHUD or not. Should be true if called from viewDidLoad(:) and
+     * when tapping the segmented buttons; should be false called from refreshAction(:)
+     */
     func downloadData(showProgress: Bool) {
         var path:BaseURLPath = .all
         var make:String? = nil
@@ -183,6 +222,10 @@ class CarsViewController: UIViewController {
         })
     }
     
+    /*
+     * Show a message in tableView background if there is no data, otherwise show the data cells
+     *
+     */
     func updateTableBackground() {
         if let dataSource = dataSource {
             
@@ -202,12 +245,19 @@ class CarsViewController: UIViewController {
 // MARK: UITableViewDelegate
 extension CarsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 118
+        return kCarSummaryTableViewCellHeight
     }
 }
 
 // MARK: CarSummaryTableViewCellDelegate
 extension CarsViewController : CarSummaryTableViewCellDelegate {
+    /*
+     * Implementation of CarSummaryTableViewCellDelegate method. Also, adds a badge to the Favorites tab.
+     *
+     * @param vehicle The cell's vehicle object
+     * @param favorite Sets the Vehicle.favorite property
+     *
+     */
     func toggle(vehicle: Vehicle, favorite: Bool) {
         vehicle.favorite = favorite
         try! APIManager.sharedInstance.dataStack.mainContext.save()

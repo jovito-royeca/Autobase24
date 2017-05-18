@@ -22,10 +22,25 @@ class FavoritesViewController: UIViewController {
     
     // MARK: Variables
     var dataSource: DATASource?
+    
+    /*
+     * Tracks the sort order. Ascending = true, Descending = false
+     *
+     */
     var sortByFirstRegistration = true
+    
+    /*
+     * Tracks the original frame.origin.y of self.view
+     *
+     */
     var origY = CGFloat(0)
 
     // MARK: Actions
+    
+    /*
+     * Sorts the favorite vehicles via firstRegistrationDate property
+     *
+     */
     @IBAction func sortAction(_ sender: UIBarButtonItem) {
         sortByFirstRegistration = !sortByFirstRegistration
         
@@ -40,6 +55,11 @@ class FavoritesViewController: UIViewController {
         TrackerManager.sharedInstance.track(screenName: screenName, action: action, details: details)
     }
 
+    /*
+     * Calculates the prices of all favorite vehicles. The bar becomes green if the entered amount is equal or bigger than
+     * the sum of prices of the cars on the list. Otherwise it becomes red.
+     *
+     */
     @IBAction func calculateAction(_ sender: UIButton) {
         amountTextField.resignFirstResponder()
         var result = "reset"
@@ -107,7 +127,7 @@ class FavoritesViewController: UIViewController {
         
         origY = view.frame.origin.y
         
-        // remove the badges
+        // remove the badge, also remove the contents of CarsViewController.newCars
         navigationController?.tabBarItem.badgeValue = nil
         if let tabBar = navigationController?.parent as? UITabBarController {
             if let carsNVC = tabBar.viewControllers?.first {
@@ -129,6 +149,11 @@ class FavoritesViewController: UIViewController {
     }
     
     // MARK: CUstom methods
+    
+    /*
+     * Setup the DATASource for Favorite Vehicles
+     *
+     */
     func getDataSource(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>?) -> DATASource? {
         var request:NSFetchRequest<NSFetchRequestResult>?
         if let fetchRequest = fetchRequest {
@@ -158,6 +183,11 @@ class FavoritesViewController: UIViewController {
         return dataSource
     }
     
+    /*
+     * Show a message in tableView background if there is no data, otherwise show the data cells.
+     * Also, recalculate the entered amount. @see calculateAction(_:)
+     *
+     */
     func updateTableBackground() {
         if let dataSource = dataSource {
             if dataSource.all().count == 0 {
@@ -192,11 +222,14 @@ class FavoritesViewController: UIViewController {
     func keyboardWillShow(_ notification: Notification) {
         keyboardDidShow(notification)
     }
-    
+
+    /*
+     * Raises the amountTextField above the keyboard
+     *
+     */
     func keyboardDidShow(_ notification: Notification) {
         var newY = origY
         
-        // raise the amount field above the keyboard
         if amountTextField.isFirstResponder {
             newY -= getKeyboardHeight(notification: notification)
             newY -= amountTextField.frame.origin.y
@@ -204,12 +237,20 @@ class FavoritesViewController: UIViewController {
         view.frame.origin.y = newY
     }
     
+    /*
+     * Restores the amountTextField in its original location.
+     *
+     */
     func keyboardWillHide(_ notification: Notification) {
         if amountTextField.isFirstResponder {
             view.frame.origin.y = origY
         }
     }
     
+    /*
+     * Calculates the keyboard height.
+     *
+     */
     func getKeyboardHeight(notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
@@ -226,16 +267,24 @@ class FavoritesViewController: UIViewController {
 // MARK: UITableViewDelegate
 extension FavoritesViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 118
+        return kCarSummaryTableViewCellHeight
     }
 }
 
 // MARK: DATASourceDelegate
 extension FavoritesViewController: DATASourceDelegate {
+    /*
+     * Enable row deletions in the table. If the user swipes left, the Delete button becoms visible
+     *
+     */
     func dataSource(_ dataSource: DATASource, tableView: UITableView, canEditRowAtIndexPath indexPath: IndexPath) -> Bool {
         return true
     }
     
+    /*
+     * Removes the favorite and recalculates the amount entered. @see calculateAction(_:)
+     *
+     */
     func dataSource(_ dataSource: DATASource, tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
         
         let favorites = dataSource.all() as [Vehicle]

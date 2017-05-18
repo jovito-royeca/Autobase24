@@ -20,14 +20,33 @@ enum HTTPMethod: String {
 
 typealias NetworkingResult = (_ result: [[String : Any]], _ error: NSError?) -> Void
 
+/*
+ * This class handles network operations, which in turn is implemented by the Networking library (https://github.com/3lvis/Networking).
+ *
+ */
 class NetworkingManager: NSObject {
 
     // MARK: Shared instance
     static let sharedInstance = NetworkingManager()
     
+    /*
+     * Checks Internet connectivity
+     *
+     */
     let reachability = Reachability()!
     
     // MARK: Custom methods
+    /*
+     * Handles network calls.
+     *
+     * @param baseUrl The server base path
+     * @param path The server subpath
+     * @param method type of HTTP operation
+     * @param headers HTTP headers
+     * @param paramType
+     * @param params HTTP parameters
+     * @param completionHandler Block which is called after the network call
+     */
     func doOperation(_ baseUrl: String,
                      path: String,
                      method: HTTPMethod,
@@ -35,7 +54,8 @@ class NetworkingManager: NSObject {
                      paramType: Networking.ParameterType,
                      params: AnyObject?,
                      completionHandler: @escaping NetworkingResult) -> Void {
-        if !reachability.isReachable {
+        
+        if !reachability.isReachable { // error, we have no Internet connection
             let error = NSError(domain: "network", code: 408, userInfo: [NSLocalizedDescriptionKey: "Network error."])
             completionHandler([[String : Any]](), error)
             
@@ -104,6 +124,12 @@ class NetworkingManager: NSObject {
         }
     }
     
+    /*
+     * Convenience method for downloading images.
+     *
+     * @param url The url of the image to be downloaded
+     * @param completionHandler Block which is called after image is downloaded.
+     */
     func downloadImage(_ url: URL, completionHandler: @escaping (_ origURL: URL?, _ image: UIImage?, _ error: NSError?) -> Void) {
         let networker = networking(forUrl: url)
         var path = url.path
@@ -133,10 +159,18 @@ class NetworkingManager: NSObject {
     }
 
     // MARK: Private methods
+    /*
+     * Convenience method for creating a Networking object.
+     *
+     */
     fileprivate func networking(forBaseUrl url: String) -> Networking {
         return Networking(baseURL: url, configurationType: .ephemeral)
     }
     
+    /*
+     * Convenience method for creating a Networking object.
+     *
+     */
     fileprivate func networking(forUrl url: URL) -> Networking {
         var baseUrl = ""
         

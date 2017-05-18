@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kCarSummaryTableViewCellHeight = CGFloat(118)
+
 protocol CarSummaryTableViewCellDelegate {
     func toggle(vehicle: Vehicle, favorite: Bool)
 }
@@ -32,6 +34,10 @@ class CarSummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var fuelTypeLabel: UILabel!
     
     // MARK: Actions
+    /*
+     * Adds/Removes the favorite if the switch is tapped. Actual operation is handled by the delegate.
+     *
+     */
     @IBAction func favoriteAction(_ sender: UISwitch) {
         starIcon.image = sender.isOn ? UIImage(named: "star-filled") : UIImage(named: "star")
     
@@ -72,6 +78,10 @@ class CarSummaryTableViewCell: UITableViewCell {
         }
     }
 
+    /*
+     * Resets the fields.
+     *
+     */
     override func prepareForReuse() {
         vehicleImage.image = nil
         
@@ -110,6 +120,11 @@ class CarSummaryTableViewCell: UITableViewCell {
     }
     
     // MARK: Custom methods
+
+    /*
+     * Fills the cell with vehicle data.
+     *
+     */
     func updateDisplay(vehicle: Vehicle) {
         self.vehicle = vehicle
 
@@ -131,6 +146,7 @@ class CarSummaryTableViewCell: UITableViewCell {
         
         makeLabel?.text = vehicle.make
         
+        // display amount in German locale
         let currencyFormatter = NumberFormatter()
         currencyFormatter.numberStyle = .currency
         currencyFormatter.locale = Locale(identifier: "de_DE")
@@ -155,6 +171,7 @@ class CarSummaryTableViewCell: UITableViewCell {
         
         mileageLabel.text = String.localizedStringWithFormat("%i km", vehicle.mileage)
         
+        // calculate and display the horsepower, as seen in the Auto Scout24 app
         let kWTohp = 1.3596216173039
         let hp = Int(Double(vehicle.powerKW) * kWTohp)
         powerKWLabel.text = "\(vehicle.powerKW) kW (\(hp) hp)"

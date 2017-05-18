@@ -32,13 +32,12 @@ class Autobase24UITests: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        XCUIApplication().tabBars.buttons["Favorites"].tap()
-        
-        
-        
-        
     }
-    
+
+    /*
+     * Tests the Sort buttons.
+     *
+     */
     func testSorting() {
         let app = XCUIApplication()
         var sortButton = app.navigationBars["Autobase24.CarsView"].buttons.element(boundBy: 0)
@@ -52,6 +51,10 @@ class Autobase24UITests: XCTestCase {
         sortButton.tap()
     }
 
+    /*
+     * Tests the Vehicle.Make filters in the UISegmentedControl
+     *
+     */
     func testFiltering() {
         let app = XCUIApplication()
         let tablesQuery = app.tables
@@ -62,6 +65,10 @@ class Autobase24UITests: XCTestCase {
         tablesQuery.buttons["all cars"].tap()
     }
     
+    /*
+     * Tests adding favorites.
+     *
+     */
     func testAddFavorites() {
         let app = XCUIApplication()
         let tablesQuery = app.tables
@@ -80,6 +87,10 @@ class Autobase24UITests: XCTestCase {
         }
     }
     
+    /*
+     * Tests deleting favorites.
+     *
+     */
     func testRemoveFavorites() {
         let app = XCUIApplication()
         
@@ -94,6 +105,10 @@ class Autobase24UITests: XCTestCase {
         }
     }
     
+    /*
+     * Tests the amount calculation.
+     *
+     */
     func testCalculation() {
         let app = XCUIApplication()
         
