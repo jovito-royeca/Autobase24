@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7y8-y2-dNQ" id="ChU-1s-aw2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -84,6 +84,26 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jyy-p7-C8K">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="QRL-5o-QZY">
+                            <rect key="frame" x="72.5" y="5.5" width="230" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autobase24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3X-i9-Bjz">
+                                    <rect key="frame" x="8" y="6" width="222" height="21"/>
+                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
+                                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="K3X-i9-Bjz" secondAttribute="trailing" id="6Vd-8l-jF8"/>
+                                <constraint firstItem="K3X-i9-Bjz" firstAttribute="centerY" secondItem="QRL-5o-QZY" secondAttribute="centerY" id="6XU-XB-cJV"/>
+                                <constraint firstItem="K3X-i9-Bjz" firstAttribute="top" secondItem="QRL-5o-QZY" secondAttribute="top" constant="6" id="94v-fQ-FWv"/>
+                                <constraint firstItem="K3X-i9-Bjz" firstAttribute="leading" secondItem="QRL-5o-QZY" secondAttribute="leadingMargin" id="aFW-dN-uVc"/>
+                            </constraints>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" image="sort ascending" id="uPv-rT-WA8">
                             <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -175,6 +195,26 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xXD-EH-cWJ">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="D31-kI-r0e">
+                            <rect key="frame" x="72.5" y="5.5" width="230" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autobase24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQe-Zr-ETF">
+                                    <rect key="frame" x="8" y="6" width="214" height="21"/>
+                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
+                                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="RQe-Zr-ETF" firstAttribute="centerY" secondItem="D31-kI-r0e" secondAttribute="centerY" id="K9U-3P-W3L"/>
+                                <constraint firstItem="RQe-Zr-ETF" firstAttribute="trailing" secondItem="D31-kI-r0e" secondAttribute="trailingMargin" id="XjA-Ya-66d"/>
+                                <constraint firstItem="RQe-Zr-ETF" firstAttribute="top" secondItem="D31-kI-r0e" secondAttribute="top" constant="6" id="c8K-PZ-rLA"/>
+                                <constraint firstItem="RQe-Zr-ETF" firstAttribute="leading" secondItem="D31-kI-r0e" secondAttribute="leadingMargin" id="d6k-j1-edZ"/>
+                            </constraints>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" image="sort ascending" id="gKe-qm-EHQ">
                             <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
