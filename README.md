@@ -45,7 +45,7 @@ An iOS app that displays and saves your favorite cars. This is the Tech Challeng
 * Unit tests covers fetching of JSON data from the server, saving to Core Data, and filtering via make parameter.
 
 **UI Testing**
-* 12
+* UI tests recreates normal user interactions with the app.
 
 ## Cloning
 Clone the GitHub repository and open the project workspace `Autobase24.xcworkspace`.
